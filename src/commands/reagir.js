@@ -6,13 +6,11 @@ module.exports = {
         .setDescription("reagir positivo ou negativo"),
 
     async execute(int) {
+        await int.reply('reaja abaixo');
 
-        try {
-            const reply = await int.channel.send("Reaja abaixo.")
-            await reply.react('✅');
-        } catch (error) {
-            console.error("Erro ao adicionar reação:")
-        }
-        return
+        const mensagem = await int.fetchReply();
+        await mensagem.react('✅');
+        await mensagem.react('❌')
+
     },
 }
